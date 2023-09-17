@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <h1>Shopping Cart</h1>
+    <p>Welcome to your favorite online shop</p>
+    
+    <div class="product">
+        <h2>Harry Potter Mug</h2>
+        <img src="HP1.webp" alt="harry potter mug" width="50px" height="50px">
+        <br> 
+        <!-- adding a like button-->
+        <button class="like-button" onclick="toggleLike(this)">❤️</button>
+        <p>Price: $10.00</p>
+        <div class="wrapper">
+            <span class="minus">-</span>
+            <span class="num">01</span>
+            <span class="plus">+</span>
+        </div>
+    </div>
+
+    <div class="product">
+        <h2>Harry Potter Shoes</h2>
+        <img src="HP2.jpg" alt="harry potter shoes" width="50px" height="50px">
+        <br>
+        <!--adding a like button-->
+        <button class="like-button" onclick="toggleLike(this)">❤️</button>
+        <p>Price: $20.00</p>
+        <div class="wrapper">
+            <span class="minus">-</span>
+            <span class="num">01</span>
+            <span class="plus">+</span>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items">
+        </ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+
+    <script>
+        //doing the like button 
+        function toggleLike(button) {
+    button.classList.toggle('liked');
+}
+        // trigering all plus and minus buttons 
+        const plusButtons = document.querySelectorAll(".plus");
+        const minusButtons = document.querySelectorAll(".minus");
+        const numSpans = document.querySelectorAll(".num");
+
+        // Initializing quantities
+        const quantities = Array.from(numSpans).map(() => 1);
+
+        // Add event listeners to plus and minus buttons for each product to do the interacting job 
+        for (let i = 0; i < plusButtons.length; i++) {
+            plusButtons[i].addEventListener("click", () => {
+                quantities[i]++;
+                updateQuantity(i);
+            });
+
+            minusButtons[i].addEventListener("click", () => {
+                if (quantities[i] > 1) {
+                    quantities[i]--;
+                    updateQuantity(i);
+                }
+            });
+        }
+
+        // Function to update quantity and calculate total 
+        function updateQuantity(index) {
+            numSpans[index].innerText = quantities[index] < 10 ? "0" + quantities[index] : quantities[index];
+
+            // Update the total price here by summing up the prices of all products
+            const productPrices = [10.00, 20.00]; // Replace with actual prices
+            const total = quantities.reduce((acc, quantity, i) => acc + quantity * productPrices[i], 0);
+
+            document.getElementById("cart-total").innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

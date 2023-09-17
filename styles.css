@@ -1,0 +1,63 @@
+/* styles.css */
+body{
+    background: linear-gradient(skyblue, lightgreen);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.product {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+} 
+
+.cart {
+    border: 1px solid #333;
+    padding: 10px;
+    margin-top: 20px;
+}
+.body {
+    color: rgb(94, 94, 237);
+}
+.wrapper{
+    height: 12;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f78e61de;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(2, 118, 250, 0.2);
+}
+.wrapper span{
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.wrapper span.num{
+    font-size: 20px; 
+    border-right: 2px solid rgba(8, 91, 244, 0.2);
+    border-left: 2px solid rgba(3, 87, 254, 0.2);
+    pointer-events: none;
+}
+.product {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.like-button {
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #8f8c8c; /* Default color for unliked */
+}
+
+.like-button.liked {
+    color: #ff0000; /* Liked color (e.g., red) */
+}
